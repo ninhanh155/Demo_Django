@@ -1,0 +1,19 @@
+{% extends 'master.html' %}
+
+{% block title %}Mật khẩu đã được đổi!{% endblock %}
+
+{% block main_content %}
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8 col-sm-10">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Mật khẩu đã được đổi!</h3>
+          <div class="alert alert-success" role="alert">
+            Bạn đã đổi mật khẩu thành công.
+          </div>
+          <a href="{% url 'dangnhap' %}" class="btn btn-secondary btn-block">Đăng nhập</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
