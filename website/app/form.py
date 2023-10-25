@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import PasswordChangeForm
+from .models import * 
 
 us_help_text='''
     <ul>
@@ -48,7 +49,23 @@ class Bieumau_doimatkhau(PasswordChangeForm):
     new_password2 = forms.CharField(label='Xác nhận mật khẩu' , widget=forms.PasswordInput(attrs={'autocomplete':'current-password','class':'form-control'}))
 
 
-class ContactForm(forms.Form):
-    name = forms.CharField(label='Họ và tên', max_length=100)
-    email = forms.EmailField(label='Email')
-    message = forms.CharField(label='Nội dung', widget=forms.Textarea)
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = ['full_name', 'email', 'content']
+        
+class ShippingForm(forms.ModelForm):
+    class Meta:
+        model = Shipping
+        fields = ['customer', 'order', 'address', 'city', 'state', 'phone']
+
+# class Bieumau_quenmatkhau(SetPasswordForm):
+#     new_password = forms.CharField( widget=forms.PasswordInput(attrs={'autocomplete':'current-password','class':'form-control'}))
+#     new_password_confirmation = forms.CharField(widget=forms.PasswordInput(attrs={'autocomplete':'current-password','class':'form-control'}))
+
+    # def __init__(self, *args, **kwargs):
+    #     super(Bieumau_quenmatkhau, self).__init__(*args, **kwargs)
+    #     self.fields['new_password'].label = "Mật khẩu"
+    #     self.fields['new_password'].help_text = pas1_help_text
+    #     self.fields['new_password_confirmation'].label = "Xác nhận mật khẩu"
+    #     self.fields['new_password_confirmation'].help_text = pas2_help_text 

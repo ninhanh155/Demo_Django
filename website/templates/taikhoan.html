@@ -14,7 +14,9 @@
         <form method="post" novalidate>
             {% csrf_token %}
             {% include 'includes/form.html' %}
-            <button type="submit" class="btn btn-primary btn-block">Lưu</button>
+            <a href="{% url "home" %}">
+              <button type="submit" class="btn btn-primary btn-block">Lưu</button>
+            </a>
       </form>
     </div>
   </div>

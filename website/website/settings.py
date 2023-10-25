@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
-    'blog',
 ]
 
 MIDDLEWARE = [
@@ -148,3 +147,11 @@ MEDIA_URL = '/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'static/images')
 
 # STATIC_ROOT = 'static'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # Địa chỉ máy chủ SMTP
+EMAIL_PORT = 587  # Cổng SMTP # Cổng SMTP
+EMAIL_HOST_USER = 'ninhanh155@gmail.com'  # Email của bạn
+EMAIL_HOST_PASSWORD = 'rwzn ppes aqzf vqiz'  # Mật khẩu email
+EMAIL_USE_TLS = True  # Sử dụng TLS

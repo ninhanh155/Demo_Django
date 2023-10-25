@@ -19,24 +19,16 @@
                             </div>
                             <div class="mt-4 mb-3"> <span class="text-uppercase text-muted brand">{{i.category.name_category}}</span>
                                 <h5 class="text-uppercase">{{i.product_name}}</h5>
-                                <div class="price d-flex flex-row align-items-center"> <span class="act-price">{{i.price}}</span>
+                                <div class="price d-flex flex-row align-items-center"> <span class="act-price"><h4>{{i.price|floatformat:0}}$</h4></span>
                                 </div>
                             </div>
-                            {% comment %} 
-                                truncatechars: giới hạn số lượng kí tự 
-                                linebreaksbr: ngắt dòng 
-                            {% endcomment %}
-                            {% comment %} <p class="about">{{ i.detail|truncatechars:100 }}</p> {% endcomment %}
                             <p class="about">{{ i.detail|linebreaksbr }}</p>
-                            {% comment %} <div class="sizes mt-5">
-                                <h6 class="text-uppercase">Size</h6> <label class="radio"> <input type="radio" name="size" value="S" checked> <span>S</span> </label> <label class="radio"> <input type="radio" name="size" value="M"> <span>M</span> </label> <label class="radio"> <input type="radio" name="size" value="L"> <span>L</span> </label> <label class="radio"> <input type="radio" name="size" value="XL"> <span>XL</span> </label> <label class="radio"> <input type="radio" name="size" value="XXL"> <span>XXL</span> </label>
-                            </div> {% endcomment %}
                             <div class="cart mt-4 align-items-center"> 
                                 <button data-product={{i.id}} data-action="add" class="btn btn-primary text-uppercase mr-2 px-4 add-btn update-cart"> Thêm giỏ hàng</button> 
                             {% if wishlist %}
-                                <button pid="{{ i.id }}" class="minus-wishlist btn btn-danger shadow px-5 py-2 ms-4"><i class="fas fa-heart fa-lg"></i></button>
-                            {% else %}
-                                <button pid="{{ i.id }}" class="plus-wishlist btn btn-success shadow px-5 py-2 ms-4"><i class="fas fa-heart fa-lg"></i></button>
+                                <button pid="{{ i.id }}" class="minus-wishlist btn btn-outline-danger shadow "><i class="fas fa-heart fa-lg"></i></button>
+                                {% else %}
+                                <button pid="{{ i.id }}" class="plus-wishlist btn btn-outline-secondary shadow "><i class="fas fa-heart fa-lg"></i></button>
                             {% endif %}
                                 <i class="fa fa-share-alt text-muted"></i> 
                             </div>
@@ -49,3 +41,4 @@
 </div>
 {% endfor %}
 {% endblock detail %}
+

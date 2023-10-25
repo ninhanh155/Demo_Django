@@ -6,11 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snack Food</title>
     <link rel="shortcut icon" type="image/png" href="{% static "app/img/logo2.png" %}"/>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link  href="{% static 'app/css/all.min.css'%}" rel="stylesheet">
     <link  href="{% static 'app/css/owl.carousel.min.css' %}" rel="stylesheet">
-    {% comment %} <link rel="stylesheet" href="{% static 'app/css/bootstrap.min.css' %}">  {% endcomment %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
@@ -28,7 +26,6 @@
             const cookies = document.cookie.split(';');
             for (let i = 0; i < cookies.length; i++) {
                 const cookie = cookies[i].trim();
-                // Does this cookie string begin with the name we want?
                 if (cookie.substring(0, name.length + 1) === (name + '=')) {
                     cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                     break;
@@ -95,7 +92,7 @@
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="{% url "taikhoan" %}">Tài khoản</a>
-                <a class="dropdown-item" href="{% url "doimatkhau" %}">Đổi mật khẩu</a>
+                <a class="dropdown-item" href="{% url "thaylaimatkhau" %}">Đổi mật khẩu</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{% url "dangxuat" %}">Đăng Xuất</a>
               </ul>
@@ -157,7 +154,7 @@
             <a href="{% url "yeuthich" %}" class="text-reset">Yêu Thích</a>
           </p>
           <p>
-            <a href="{% url "order" %}" class="text-reset">Đơn Hàng</a>
+            <a href="{% url "order_history" %}" class="text-reset">Lịch sử Đơn Hàng</a>
           </p>
           <p>
             <a href="#!" class="text-reset">Laravel</a>
@@ -172,16 +169,16 @@
             Useful links
           </h6>
           <p>
-            <a href="{% url "blog" %}" class="text-reset">Tin tức</a>
+            <a href="#" class="text-reset">Tin tức</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Giới Thiệu</a>
+            <a href="#" class="text-reset">Giới Thiệu</a>
           </p>
           <p>
             <a href="{% url "contact" %}" class="text-reset">Liên Hệ</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Help</a>
+            <a href="#" class="text-reset">Help</a>
           </p>
         </div>
         <!-- Grid column -->
@@ -230,7 +227,7 @@
  
   <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
     © 2023 Copyright:
-    <a class="text-reset fw-bold" href="#">Ninh Anh</a>
+    <a class="text-reset fw-bold" href="#">Ninh Anh & Bảo </a>
   </div>
   <!-- Copyright -->
 </footer>

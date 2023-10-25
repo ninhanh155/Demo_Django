@@ -13,13 +13,6 @@ class Category(models.Model):
     def __str__(self):
         return self.name_category
         
-# Khachhang
-class Customer(models.Model):
-    user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank= False)
-    customer_name = models.CharField(max_length=200, null= True)
-    email = models.CharField(max_length=200, null= True)
-    def __str__(self):
-        return self.customer_name
 
 # sản phẩm
 class Product(models.Model):
@@ -44,7 +37,7 @@ class Product(models.Model):
         
 class Order(models.Model):
     # trường khóa gọi class khách hàng
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, blank=True, null=True)
+    customer = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
     date_order = models.DateTimeField(auto_now_add=True)
     # khách hàng đã mua xog chưa
     complete = models.BooleanField(default=True)
@@ -52,7 +45,7 @@ class Order(models.Model):
     transaction_id = models.CharField(max_length=200, null=True)
     
     def __str__(self):
-        return str(self.id)
+        return str(self.customer)
 
     @property
     def get_cart_items(self):
@@ -74,14 +67,14 @@ class Orderitem(models.Model):
     quantity = models.IntegerField(default=0, null=True, blank=True)
     # ngày đặt hàng
     date_added = models.DateTimeField(auto_now_add=True)
-    
+        
     @property
     def get_total(self):
         total = self.product.price * self.quantity
         return total 
         
 class Shipping(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, blank=True, null=True)
+    customer = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, blank=True, null=True)
     address = models.CharField(max_length=200, null=True)
     city = models.CharField(max_length=200, null=True)
@@ -96,3 +89,18 @@ class Shipping(models.Model):
 class Wishlist(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='wishlist')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+    @property
+    def get_wishlist_items(self):
+        orderitems = self.wishlist_set.all()
+        total = sum([item.quantity for item in orderitems])
+        return total
+
+
+class Contact(models.Model):
+    full_name = models.CharField(max_length=100)
+    email = models.EmailField()
+    content = models.TextField()
+
+    def __str__(self):
+        return self.full_name

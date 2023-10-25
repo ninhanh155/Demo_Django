@@ -21,28 +21,22 @@
                 </div>
                 <div class="col-md-6 col-lg-6 col-xl-6">
                   <h5>{{i.product.product_name}}</h5>
-                  <div class="d-flex flex-row">
-                    <div class="text-danger mb-1 me-2">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                    <span>310</span>
-                  </div>
                   <p class="text-truncate mb-4 mb-md-0">
                     {{i.product.detail}}
                   </p>
                 </div>
                 <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
+                  <form action="{% url 'remove_from_wishlist' i.product.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="text-muted" style="border: none; background: none; padding: 0;float:right;">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </form>
                   <div class="d-flex flex-row align-items-center mb-1">
-                    <h4 class="mb-1 me-1">${{i.product.price}}</h4>
-                    {% comment %} <span class="text-danger"><s>$20.99</s></span> {% endcomment %}
+                    <h4 class="mb-1 me-1">${{i.product.price | floatformat:0}}</h4>
                   </div>
-                  <h6 class="text-success">Free shipping</h6>
                   <div class="d-flex flex-column mt-4">
                     <a class="btn btn-primary btn-sm" href="{% url 'chitiet' i.product.id %}">Xem</a>
-                    
                     <button data-product={{product.id}} data-action="add" class="btn btn-outline-primary btn-sm mt-2 update-cart">Thêm giỏ hàng </button>
                   </div>
                 </div>

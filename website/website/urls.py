@@ -20,14 +20,10 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
-admin.site.site_header = 'Admin'
-admin.site.site_title = 'Snack Food'
-admin.site.index_title = 'Snack Food'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app.urls')),
-    path('', include('blog.urls')),
 
 ]
 # dẫn qua tấm hình dểd hiện thị hình ảnh
